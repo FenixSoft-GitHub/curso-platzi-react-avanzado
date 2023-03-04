@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "name": "petgram-fenix",
     "builds": [
         { "use": "@vercel/static-build", "src": "package.json"}
     ],

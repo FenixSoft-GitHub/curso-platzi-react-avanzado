@@ -1,9 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client'
+import { App } from './App'
 
-// ReactDOM.render(<h1>'Seguimos con el curso Avanzado!!!'</h1>, document.getElementById('app'));
+const client = new ApolloClient({
+  uri: 'https://petgram-server-fenix-fenixsoft-github.vercel.app/graphql',
+  cache: new InMemoryCache()
+})
 
-import { createRoot } from 'react-dom/client';
-const container = document.getElementById('app');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
-root.render(<h1>Seguimos con el curso Avanzado!!!...</h1>);
+const container = document.getElementById('app')
+const root = createRoot(container) // createRoot(container!) if you use TypeScript
+root.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+)
